@@ -212,7 +212,7 @@ launch()
 	then
 		if [[ -x $ENGINEPATH/bin/godot.x11.tools.64 ]]
 		then
-			$ENGINEPATH/bin/godot.x11.tools.64
+			$ENGINEPATH/bin/godot.x11.tools.64 "$@"
 
 		else
 			say "Unable to find executable. Try building first!"
@@ -221,7 +221,7 @@ launch()
 	else
 		if [[ -x $ENGINEPATH/bin/godot.x11.tools.32 ]]
 		then
-			$ENGINEPATH/bin/godot.x11.tools.32
+			$ENGINEPATH/bin/godot.x11.tools.32 "$@"
 
 		else
 			say "Unable to find executable. Try building first!"
@@ -271,10 +271,8 @@ main()
 		echo "$ENGINEPATH/bin/godot.x11.tools.64"
 
 	else
-		if [ ! -z ${1+x} ]; then say "godot-utils: '${1}' is not a godot command."; exit; fi
-
-		launch
+		launch "$@"
 	fi
 }
 
-main $@
+main "$@"
